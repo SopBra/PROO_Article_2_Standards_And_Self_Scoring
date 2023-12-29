@@ -1,0 +1,212 @@
+---
+title: "Analyses Printed Summary"
+author: "Sophia"
+date: '`r Sys.Date()`'
+output: 
+  rmdformats::html_clean
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+options(knitr.kable.NA = '', 
+        repos = list(CRAN="http://cran.rstudio.com/")) # See https://stackoverflow.com/questions/55244209/error-in-contrib-urlrepos-source-in-r-trying-to-use-cran-without-setting-a
+
+```
+
+
+```{r load analysis script, include=FALSE}
+source("Scripts/1.2_Self_Scoring_Data_Analysis.R", local = knitr::knit_global())
+
+# or sys.source("your-script.R", envir = knitr::knit_global())
+```
+
+# Methods Both Experiments
+
+We conducted a power analysis with the SPA-ML software (Moerbeek \& Teerenstra, 2016) for multilevel analyses, using effect size *d* =.25 and *ICC* = 0.3 (on student level), based on Van de Pol (2019). Based on the power analysis and to be able to account for potential drop-out, data from 130 secondary-school students across six classes in the Netherlands was collected (see Table 1). 
+
+
+```{r descriptives and irr study 1 and 2, echo=FALSE, message=FALSE}
+
+## Table class overview !!!
+
+overview_n %>%
+  kbl(caption = "Number of Sampled, Excluded and Analysed Participants and Trials",
+      align = "clcccccccc") %>% 
+  kable_paper("striped", full_width = F) %>%
+  add_header_above(c(" " = 2, "Sampled" = 2, "Time on Task > 40min" = 2, "Reading Time < Cut-Off" = 2, "Analyzed" = 2)) 
+
+age_gender_frame %>% 
+  kbl(caption = "Age Distribution of Experiment 1 and 2",
+      align = "ccc") %>% 
+  kable_paper("striped", full_width = F) %>%
+  kable_styling(full_width = FALSE)
+
+female_ratio_to_merge %>% 
+  kbl(caption = "Gender Distribution of Experiment 1 and 2",
+      align = "clcc") %>% 
+  kable_paper("striped", full_width = F) %>%
+  kable_styling(full_width = FALSE)
+
+overview_time_on_task %>% 
+  kbl(caption = "Time on Task Per Condition and Experiment",
+      align = "clcccc") %>% 
+  kable_paper("striped", full_width = F) %>%
+  kable_styling(full_width = FALSE)
+
+```
+
+Coding 20% of the diagram data and 20% of the test data, the first author and a colleague reached an inter-rater reliability (weighted squared kappa; Vanbelle, 2016; *κ*) of .85 for the diagram data, and .95 for the test data. 
+
+  
+# Results Both Experiments
+
+## Manipulation Check: Self-Scoring Evaluation
+```{r self_scoring, echo=FALSE, message=FALSE}
+all_self_scoring_output
+```
+
+## Descriptive Statistics Exp.1 and 2
+
+```{r MA descriptives Exp1 and 2, echo=FALSE, message=FALSE}
+desc_all_outcomes
+
+## Bias Plots
+hist(bias_data_exp_1_ssi$Mon_Acc_Bias, breaks=8 ,xlim=c(-4,4) , xlab="Monitoring Accuracy Bias" , ylab="Frequency of Score" , main="Experiment 1 - SSI Condition")
+hist(bias_data_exp_1_no_ssi$Mon_Acc_Bias, breaks=8 , xlim=c(-4,4) , xlab="Monitoring Accuracy Bias" , ylab="Frequency of Score" , main=" Experiment 1 - No-SSI Condition")
+
+##   Plots for Experiment 2                                                         
+hist(bias_data_exp_2_ssi$Mon_Acc_Bias, breaks=8 , xlim=c(-4,4) , xlab="Monitoring Accuracy Bias" , ylab="Frequency of Score" , main="Experiment 2 - SSI Condition")
+hist(bias_data_exp_2_no_ssi$Mon_Acc_Bias, breaks=8 , xlim=c(-4,4) , xlab="Monitoring Accuracy Bias" , ylab="Frequency of Score" , main="Experiment 2 - No-SSI Condition")
+hist(bias_data_exp_2_diagramming_only$Mon_Acc_Bias, breaks=8 , xlim=c(-4,4) , xlab="Monitoring Accuracy Bias" , ylab="Frequency of Score" , main="Experiment 2 - Diagramming-Only Condition")
+
+
+```
+
+
+# Results Experiment 1
+
+## Monitoring Accuracy
+```{r RQ Monitoring Accuracy exp1, echo=FALSE, message=FALSE}
+all_MA_exp1_tab_models
+
+ma_condition_plot_exp1
+
+```
+The model with the interaction `r  ma_exp_1_model_comparison_interpretation[1]` significantly more variance compared to the model fitting only main effects `r ma_exp_1_model_comparison_interpretation[2]`. The main effects model explained `r round(rsq.lmm(abs_Mon_Acc_Mod_main_exp1)$model*100,2)`% of the observed variance.
+  
+Testing the hypothesis of no differences in students’ mean monitoring accuracy across six trials between Phase 1 and 2 in the SSI condition, showed a Bayes factor of `r round(bayes_abs_MA_Phase_Exp_1_df$bf,2)`, suggesting weak evidence for the alternative hypothesis compared to the null hypothesis. Related to our research question, this means that the data is `r round(bayes_abs_MA_Phase_Exp_1_df$bf,2)` times more likely under the alternative hypothesis (i.e., differences between Phase 1 and 2) compared to the null hypothesis (i.e., no differences in mean absolute monitoring accuracy between Phase 1 and 2).
+
+
+## Text Comprehension
+```{r Exp1 Text comprehension, echo=FALSE, message=FALSE}
+
+text_comp_all_models_exp1_tab
+
+tc_condition_plot_exp1
+
+```
+The model with the interaction `r  tc_exp_1_model_comparison_interpretation[1]` significantly more variance compared to the model fitting only main effects `r tc_exp_1_model_comparison_interpretation[2]`. The main effects model explained `r round(rsq.lmm(text_comp_main_exp1)$model*100,2)`% of the observed variance.
+
+## Restudy Decisions
+```{r restudy_decsisions_exp1, echo=FALSE, message=FALSE}
+restudy_MA_mod_tab_exp1
+summary(restudy_MA_mod_exp1)
+
+restudy_TC_mod_tab_exp1
+summary(restudy_TC_mod_exp1)
+
+```
+
+## Cue Values 
+```{r diagram_cues, echo=FALSE, message=FALSE}
+desc_Cues
+```
+
+# Experiment 2
+
+# Monitoring Accuracy
+
+```{r Exp2 MA, echo=FALSE, message=FALSE}
+all_MA_exp2_tab_models
+
+ma_condition_plot_exp2
+```
+The model with the interaction `r  ma_exp_2_model_comparison_interpretation[1]` significantly more variance compared to the model fitting only main effects `r ma_exp_2_model_comparison_interpretation[2]`. The main effects model explained `r round(rsq.lmm(abs_Mon_Acc_Mod_main_exp2)$model*100,2)`% of the observed variance.
+  
+Testing the hypothesis of no differences between mean absolute monitoring accuracy of students in the SSI condition between Phase 1 and 2, a Bayes Factor of `r round(bayes_abs_MA_Phase_Exp_2_df$bf,2)` suggested moderate evidence against the alternative hypothesis compared to the null hypothesis. This means that the data is about `r 1/round(bayes_abs_MA_Phase_Exp_2_df$bf,2)` times more likely under the null hypothesis (no differences between monitoring accuracy between Phase 1 and 2) compared to the alternative hypothesis. 
+
+## Text Comprehension
+
+```{r Exp2 Text comprehension, echo=FALSE, message=FALSE}
+all_text_comp_model_exp_2
+
+emm_TC_exp2
+
+tc_condition_plot_exp2
+```
+The model with the interaction `r  tc_exp_2_model_comparison_interpretation[1]` significantly more variance compared to the model fitting only main effects `r tc_exp_2_model_comparison_interpretation[2]`. The main effects model explained `r round(rsq.lmm(text_comp_main_exp2)$model*100,2)`% of the observed variance.
+
+
+## Restudy Decisions
+```{r restudy_decisions_exp2, echo=FALSE, message=FALSE}
+restudy_MA_mod_tab_exp2 
+summary(restudy_MA_mod_exp2)
+
+restudy_TC_mod_tab_exp2
+summary(restudy_TC_mod_exp2)
+```
+
+
+### *Time on Trial Experiment 2*
+```{r Time Trial, echo=FALSE, message=FALSE}
+time_on_trial_first_last 
+
+suppressWarnings(time_on_trial_plot_exp2)
+```
+
+
+# Experiment 1 vs. Experiment 2
+
+### *We exploratively compared experiments 1 and 2 to investigate differences in monitoring accuracy and text comprehension between students in the delayed and immediate diagramming designs.*
+```{r No Differences Monitoring Accuracy Exp2, echo=FALSE, message=FALSE}
+all_MA_tab_models
+text_comp_both_exp_all_models_tab
+
+```
+For monitoring accuracy, the model with the interaction `r  ma_both_exp_model_comparison_interpretation[1]` significantly more variance compared to the model fitting only main effects `r ma_both_exp_model_comparison_interpretation[2]`. The main effects model explained `r round(rsq.lmm(abs_Mon_Acc_Mod_main)$model*100,2)`% of the observed variance.
+For text comprehension, the model with the interaction `r  tc_both_exp_model_comparison_interpretation[1]` significantly more variance compared to the model fitting only main effects `r tc_both_exp_model_comparison_interpretation[2]`. The main effects model explained `r round(rsq.lmm(text_comp_main)$model*100,2)`% of the observed variance.
+
+
+
+
+
+
+  
+ \
+ \
+ \
+  
+
+# Appendix
+```{r Time on Task, echo=FALSE, message=FALSE}
+overview_time_on_task %>% 
+  kbl(caption = "Time on Task per Experiment and Condition") %>% 
+  kable_paper("striped", full_width = F) %>%
+  kable_styling(full_width = FALSE) 
+
+```
+
+### *Time Diagram Study - Comparisons of First and Last Trial of Experiment 2*
+```{r Diagram Study Time, echo=FALSE, message=FALSE}
+tab_model(digram_study_time_exp2)
+digram_study_time_first_last_exp2
+```
+
+### *Time of Test Compilations - Comparisons of First and Last Trial of Experiment 2*
+```{r Test Time, echo=FALSE, message=FALSE}
+tab_model(test_time_model_exp_2)
+test_time_first_last
+```
+
+...
+

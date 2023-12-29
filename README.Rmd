@@ -1,0 +1,108 @@
+---
+title: "Data Processing of the Article: Causal diagramming to improve students’ monitoring accuracy and text comprehension: Effects of diagram standards and self-scoring instructions"
+author: "Sophia"
+output:
+  html_document
+---
+
+## Introduction  
+
+This R project reflects the data cleaning and analyses of the article
+_Causal diagramming to improve students’ monitoring accuracy and text comprehension: Effects of diagram standards and self-scoring instructions_ 
+
+For a more elaborate documentation, see Documentation.Rmd in the Documentation folder.
+
+## Usage                      
+
+
+### User who does not need any help with accessing this project/using git/etc.
+
+  - You should be able to run all scripts (in /Scripts/) without pre-installing packages, this will be handled in the first part of each script (if the packages are not yet installed on your system).  
+  - To knit the formatted output 'Article_1_Feedback_Standards_Output_Summary_Artificial_Data.Rmd' in the main directory, you will need to 
+      -  run the two analysis scripts in Scripts/Scripts_Data_Analyses first, <b>OR</b>
+      -  run the Package_Installation_Help.R in Scripts/ first.
+
+### User who has git and R installed (or is willing to do that) but needs some more guidance
+
+   -  Make sure you have git, R and RStudio installed
+
+   -  Open the project using Rstudio by selecting <b>file</b> -> <b>new project</b> -> <b>version control</b> -> <b>git</b> and enter https://github.com/SopBra/NRO-PROO_Article_1_Effects_Of_Feedback_Standards_During_Diagramming
+
+(Choose where you would like to store the project folder).
+
+<b>To inspect the single data cleaning and analysis scripts:</b>
+
+   - Open any of the scripts located in the Scripts folder, (select the whole script) and click Run
+
+<b>To directly inspect the formatted output file of the analysis script:</b>
+
+   - Open the Scripts folder and open + run the 'Package_Installation_Help.R' script
+   - Open 'Article_1_Feedback_Standards_Output_Summary_Artificial_Data.Rmd' in the main directory and click 'knit'
+   
+### When none of the above is applicable to you/you start from scratch:
+
+0. Install R and RStudio
+1. Go to https://github.com/SopBra/NRO-PROO_Article_1_Effects_Of_Feedback_Standards_During_Diagramming
+2. Press Code --> Download ZIP
+
+<b>Mac OS</b>
+
+3. Move the ZIP file to a place you like and extract it there, for example in a new folder on your Desktop called Cool_RProject
+4. Open Rstudio 
+5. Press File --> Open project
+6. Choose [the place you liked, for example Desktop] --> Cool_RProject --> 0_PROO_Article_1_Feedback_Standards.Rproj
+7. Press File --> Open File
+8. Choose [the place you liked, for example Desktop] --> Cool_RProject --> Scripts --> Package_Installation_Help.R
+   -  Mark/select the entire script and press Run (alternative: command/cmd + A and then command/cmd + Enter) --> This will make sure you have all the right packages installed
+9. Press File --> Open File  
+10.Choose [the place you liked, for example Desktop] --> Article_1_Feedback_Standards_Output_Summary_Artificial_Data.Rmd  
+11.Press Knit --> This will generate the output as presented in the paper
+
+
+
+<b>Windows OS</b>
+
+3. Extract ZIP file to a path (preferably short if you are using Windows), for instance: C:&#92;Cool_RProject\
+4. Open Rstudio (default location Windows: "C:&#92;Program Files&#92;RStudio&#92;rstudio.exe")
+5. Press File --> Open project
+6. Choose C:&#92;Cool_RProject&#92;0_PROO_Article_1_Feedback_Standards.Rproj
+7. Press File --> Open File
+8. Choose C:&#92;Cool_RProject&#92;Scripts&#92;Package_Installation_Help.R
+   -  Mark/select the entire script and press Run (alternative: CTRL + Enter) --> This will make sure you have all the right packages installed
+9. Press File --> Open File  
+10.Choose C:&#92;Cool_RProject&#92;Article_1_Feedback_Standards_Output_Summary_Artificial_Data.Rmd  
+11.Press Knit (alternative: CTRL + SHIFT + K) --> This will generate the output as presented in the paper
+
+
+
+### Disclaimer and WARNING:
+This project is set-up in such a way that people without any programming background can understand and make use of the R scripts. The scripts are partly VERY long (think about 1500 lines of code).  
+<b>I strongly recommend</b> folding the code to make navigation easier by:  
+
+ -  <b>Navigating to Edit->Folding->Collapse All</b> or, 
+ 
+ -  depending on the system you are using, with the <b>shortcuts: alt+cmd+o</b> or <b>ctrl+alt+o</b>
+
+![ ](Documents/R_script_navigation.png)
+
+
+## Help                       
+If you need help with using this project or any of the scripts, please don't hesitate to contact me (using Github or contacting me via email (find the address by searching for my name online, or navigate to the second/third version of this file ;)
+
+## Feedback and Contributing  
+If you have suggestions for improvements (and you are not comfortable with creating an Issue), please don't hesitate to contact me via Github or email.
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## License                    
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
+## Project status             
+
+This is the first version after publication. To be updated with (improved) future versions :)
+
+
+
+
+
