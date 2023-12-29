@@ -4,7 +4,7 @@ This R project reflects the data cleaning and analyses of the article
 _Causal diagramming to improve students’ monitoring accuracy and text comprehension: Effects of diagram standards and self-scoring instructions_ 
 
 A snapshot of this project at time of first publication (December 2023) can be found here: 
-[![DOI](https://zenodo.org/badge/719480492.svg)](https://zenodo.org/doi/10.5281/zenodo.10204077)
+[![DOI](https://zenodo.org/badge/737124959.svg)](https://zenodo.org/doi/10.5281/zenodo.10443529)
 
 This project will undergo maintenance (e.g., updating used packages) and improvements based on feedback. 
 
